@@ -13,7 +13,7 @@ namespace Project2144.Products
        ProductDto,              // TEntityDto
        int,                     // TPrimaryKey
        PagedAndSortedResultRequestDto,  // TGetAllInput
-       ProductDto,              // TCreateInput (temporary)
+       CreateProductDto,              // TCreateInput (temporary)
        ProductDto>              // TUpdateInput (temporary)
     {
     }

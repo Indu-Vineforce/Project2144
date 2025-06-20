@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <h2>{{ isEditing ? 'Edit Intern' : 'Add New Intern' }}</h2>
+
+  <form [formGroup]="internForm" (ngSubmit)="saveIntern()">
+    <div class="form-group">
+      <label for="name">Intern Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter intern name"
+      />
+      <div *ngIf="internForm.get('name')?.invalid && internForm.get('name')?.touched" class="text-danger">
+        Name is required
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      {{ isEditing ? 'Update Intern' : 'Create Intern' }}
+    </button>
+    <button type="button" class="btn btn-secondary ml-2" (click)="resetForm()">Reset</button>
+  </form>
+
+  <hr />
+
+  <h3 class="mt-4">Interns List</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let intern of interns">
+        <td>{{ intern.id }}</td>
+        <td>{{ intern.name }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-info mr-2" (click)="editIntern(intern)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteIntern(intern.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

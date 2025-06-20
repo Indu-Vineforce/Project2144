@@ -32,6 +32,24 @@ import { AppComponent } from './app.component';
                         data: { permission: 'Pages.Roles' },
                         canActivate: [AppRouteGuard],
                     },
+                     {
+                        path: 'products',
+                        loadChildren: () => import('./products/products.module').then((m) => m.productsModule),
+                         
+                        canActivate: [AppRouteGuard],
+                    },
+                      {
+                        path: 'departments',
+                        loadChildren: () => import('./departments/departments.module').then((m) => m.departmentsModule),
+                         
+                        canActivate: [AppRouteGuard],
+                    },
+                      {
+                        path: 'interns',
+                        loadChildren: () => import('./interns/interns.module').then((m) => m.internsModule),
+                         
+                        canActivate: [AppRouteGuard],
+                    },
                     {
                         path: 'tenants',
                         loadChildren: () => import('./tenants/tenants.module').then((m) => m.TenantsModule),

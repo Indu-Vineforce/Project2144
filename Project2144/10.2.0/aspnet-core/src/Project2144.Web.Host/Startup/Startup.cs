@@ -43,6 +43,8 @@ namespace Project2144.Web.Host.Startup
                 options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
             });
 
+
+
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
@@ -65,6 +67,8 @@ namespace Project2144.Web.Host.Startup
                         .AllowCredentials()
                 )
             );
+
+
 
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             ConfigureSwagger(services);

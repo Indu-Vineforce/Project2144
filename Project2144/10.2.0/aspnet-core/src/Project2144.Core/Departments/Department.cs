@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project2144.Projects
+namespace Project2144.Departments
 {
-    public class Product:Entity<int> // int primary key type
-    {
+    public class Department:Entity<int>
+    {    
         public string Name { get; set; }
-        public decimal Price { get; set; }
-   
     }
 }

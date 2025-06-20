@@ -1,0 +1,89 @@
+<div [@routerTransition]>
+  <!-- Page Header -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1>{{ isEditing ? 'Edit Department' : 'Create Department' }}</h1>
+        </div>
+        <div class="col-6 text-right">
+          <a href="javascript:;" class="btn bg-blue" (click)="resetForm()">
+            <i class="fa fa-sync"></i>
+            {{ isEditing ? 'Cancel' : 'Reset' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page Content -->
+  <section class="content px-2 pb-5">
+    <div class="container-fluid">
+      <div class="card mb-4">
+        <!-- Department Form -->
+        <div class="card-header">
+          <form [formGroup]="departmentForm" (ngSubmit)="saveDepartment()">
+            <div class="row">
+              <div class="col-md-10">
+                <div class="form-group">
+                  <label for="name">Department Name*</label>
+                  <input
+                    type="text"
+                    id="name"
+                    formControlName="name"
+                    class="form-control"
+                    placeholder="Enter department name"
+                  />
+                  <div class="text-danger mt-1" *ngIf="departmentForm.controls.name.invalid && departmentForm.controls.name.touched">
+                    Department name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn bg-blue w-100">
+                  <i class="fa fa-save"></i> {{ isEditing ? 'Update' : 'Create' }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Department List -->
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th style="width: 150px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dept of departments">
+                  <td>{{ dept.name }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-secondary"
+                      (click)="editDepartment(dept)">
+                      <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-danger mx-2"
+                      (click)="deleteDepartment(dept.id)">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="departments.length === 0" class="text-center p-2">
+              No departments found.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -11,6 +11,9 @@ public class Project2144AuthorizationProvider : AuthorizationProvider
         context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
         context.CreatePermission(PermissionNames.Pages_Users_Activation, L("UsersActivation"));
         context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
+        context.CreatePermission(PermissionNames.Pages_Products, L("Products"), multiTenancySides: MultiTenancySides.Host);
+        context.CreatePermission(PermissionNames.Pages_Interns, L("Interns"), multiTenancySides: MultiTenancySides.Host);
+        context.CreatePermission(PermissionNames.Pages_Departments, L("Departments"), multiTenancySides: MultiTenancySides.Host);
         context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
     }
 

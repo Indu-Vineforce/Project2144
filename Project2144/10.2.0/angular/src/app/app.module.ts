@@ -39,7 +39,6 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         NgxPaginationModule,
         SharedModule,
         AppComponent,
-        // layout
         HeaderComponent,
         HeaderLeftNavbarComponent,
         HeaderLanguageMenuComponent,
@@ -49,6 +48,8 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SidebarLogoComponent,
         SidebarUserPanelComponent,
         SidebarMenuComponent,
+        
+        
     ],
     providers: [],
 })
