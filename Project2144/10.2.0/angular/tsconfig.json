@@ -16,5 +16,5 @@
             "path": "./src/tsconfig.spec.json"
         }
     ],
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*.ts", "src/app/skills/skills.module.ts"]
 }

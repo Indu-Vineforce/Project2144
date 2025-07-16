@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LocalizePipe } from '@shared/pipes/localize.pipe';
 
 @Component({
-
+  standalone: true,
   selector: 'app-interns',
   imports: [CommonModule, ReactiveFormsModule, LocalizePipe],
   templateUrl: './interns.component.html',
@@ -23,7 +23,6 @@ export class InternsComponent implements OnInit {
   ) {
     this.internForm = this.fb.group({
       name: ['', Validators.required],
-      // Add other fields as needed (e.g., age, email)
     });
   }
 
@@ -56,7 +55,6 @@ export class InternsComponent implements OnInit {
       const updatedIntern = new UpdateInternDto({
         id: this.currentInternId,
         name: formValues.name
-        // Add other fields as needed
       });
 
       this.internService.update(updatedIntern).subscribe({
@@ -74,7 +72,6 @@ export class InternsComponent implements OnInit {
     } else {
       const newIntern = new CreateInternDto({
         name: formValues.name
-        // Add other fields as needed
       });
 
       this.internService.create(newIntern).subscribe({

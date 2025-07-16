@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <h2>Skills Management</h2>
+
+  <!-- Add/Edit Form -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      {{ isEditing ? 'Edit Skill' : 'Add New Skill' }}
+    </div>
+    <div class="card-body">
+      <form [formGroup]="skillForm" (ngSubmit)="saveSkill()">
+        <div class="mb-3">
+          <label for="skillName" class="form-label">Skill Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="skillName"
+            formControlName="name"
+            placeholder="Enter skill name"
+          />
+          <div *ngIf="skillForm.get('name')?.invalid && (skillForm.get('name')?.touched || skillForm.get('name')?.dirty)" 
+               class="text-danger mt-1">
+            Skill name is required
+          </div>
+        </div>
+        
+        <div class="d-flex gap-2">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="skillForm.invalid"
+          >
+            {{ isEditing ? 'Update Skill' : 'Add Skill' }}
+          </button>
+          
+          <button 
+            type="button" 
+            class="btn btn-outline-secondary"
+            (click)="resetForm()"
+            *ngIf="isEditing"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Skills List -->
+  <div class="card">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">Skills List</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th width="70%">Name</th>
+            <th width="30%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let skill of skills">
+            <td>{{ skill.name }}</td>
+            <td>
+              <div class="d-flex gap-2">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-warning"
+                  (click)="editSkill(skill)"
+                >
+                  Edit
+                </button>
+                
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger"
+                  (click)="deleteSkill(skill.id)"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

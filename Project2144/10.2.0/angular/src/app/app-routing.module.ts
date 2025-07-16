@@ -50,6 +50,13 @@ import { AppComponent } from './app.component';
                          
                         canActivate: [AppRouteGuard],
                     },
+                      {
+                        path: 'skills',
+                    loadChildren: () => import('./skills/skills.module').then((m) => m.skillsModule),
+
+                         
+                        canActivate: [AppRouteGuard],
+                    },
                     {
                         path: 'tenants',
                         loadChildren: () => import('./tenants/tenants.module').then((m) => m.TenantsModule),

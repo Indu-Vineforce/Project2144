@@ -29,15 +29,15 @@ export class DepartmentsComponent implements OnInit {
       name: ['', Validators.required]
     });
   }
-
   ngOnInit(): void {
     this.getAllDepartments();
   }
-
   getAllDepartments(): void {
+    debugger;
     this.departmentService.getAll().subscribe({
       next: (result) => {
         this.departments = result || [];
+        console.log('tjsio',result);
       },
       error: (error) => {
         console.error('Error fetching departments:', error);
@@ -45,7 +45,6 @@ export class DepartmentsComponent implements OnInit {
       }
     });
   }
-
   deleteDepartment(id: number): void {
     if (confirm('Are you sure you want to delete this department?')) {
       this.departmentService.delete(id).subscribe({
@@ -60,7 +59,6 @@ export class DepartmentsComponent implements OnInit {
       });
     }
   }
-
   editDepartment(dept: UpdateDepartmentDto): void {
     this.departmentForm.patchValue({
       name: dept.name
